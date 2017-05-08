@@ -27,24 +27,24 @@ COREOS_VERSION=${3:-$COREOS_VERSION_DEFAULT}
 # this is where the modules go
 release=$(uname -r)
 
-mkdir -p /opt/lib64/tls 2>/dev/null
-mkdir -p /opt/bin 2>/dev/null
-ln -sfT lib64 /opt/lib 2>/dev/null
-mkdir -p /opt/lib64/modules/$release/video/
+mkdir -p /opt/nvidia/lib64/tls 2>/dev/null
+mkdir -p /opt/nvidia/bin 2>/dev/null
+ln -sfT lib64 /opt/nvidia/lib 2>/dev/null
+mkdir -p /opt/nvidia/lib64/modules/$release/video/
 
-tar xvf libraries-$DRIVER_VERSION.tar.bz2 -C /opt/lib64/
-tar xvf libraries-tls-$DRIVER_VERSION.tar.bz2 -C /opt/lib64/tls/
-tar xvf modules-$COREOS_VERSION-$DRIVER_VERSION.tar.bz2 -C /opt/lib64/modules/$release/video/
-tar xvf tools-$DRIVER_VERSION.tar.bz2 -C /opt/bin/
+tar xvf libraries-$DRIVER_VERSION.tar.bz2 -C /opt/nvidia/lib64/
+tar xvf libraries-tls-$DRIVER_VERSION.tar.bz2 -C /opt/nvidia/lib64/tls/
+tar xvf modules-$COREOS_VERSION-$DRIVER_VERSION.tar.bz2 -C /opt/nvidia/lib64/modules/$release/video/
+tar xvf tools-$DRIVER_VERSION.tar.bz2 -C /opt/nvidia/bin/
 
-install -m 755 create-uvm-dev-node.sh /opt/bin/
-install -m 755 nvidia-start.sh /opt/bin/
-install -m 755 nvidia-insmod.sh /opt/bin/
+install -m 755 create-uvm-dev-node.sh /opt/nvidia/bin/
+install -m 755 nvidia-start.sh /opt/nvidia/bin/
+install -m 755 nvidia-insmod.sh /opt/nvidia/bin/
 cp -f 71-nvidia.rules /etc/udev/rules.d/
 udevadm control --reload-rules
 
 mkdir -p /etc/ld.so.conf.d/ 2>/dev/null
-echo "/opt/lib64" > /etc/ld.so.conf.d/nvidia.conf
+echo "/opt/nvidia/lib64" > /etc/ld.so.conf.d/nvidia.conf
 ldconfig
 
 echo "Configuring nvidia persistence user"

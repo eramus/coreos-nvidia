@@ -13,19 +13,19 @@ ACTION=="add" DEVPATH=="/module/nvidia" SUBSYSTEM=="module" RUN+="/bin/systemctl
 ACTION=="remove" DEVPATH=="/module/nvidia" SUBSYSTEM=="module" RUN+="/bin/systemctl stop --no-block nvidia-persistenced"
 
 # Load and unload nvidia-modeset module
-ACTION=="add" DEVPATH=="/module/nvidia" SUBSYSTEM=="module" RUN+="/opt/bin/nvidia-insmod.sh nvidia-modeset.ko"
+ACTION=="add" DEVPATH=="/module/nvidia" SUBSYSTEM=="module" RUN+="/opt/nvidia/bin/nvidia-insmod.sh nvidia-modeset.ko"
 ACTION=="remove" DEVPATH=="/module/nvidia" SUBSYSTEM=="module" RUN+="/usr/sbin/rmmod -r nvidia-modeset"
 
 # Load and unload nvidia-drm module
-ACTION=="add" DEVPATH=="/module/nvidia" SUBSYSTEM=="module" RUN+="/opt/bin/nvidia-insmod.sh nvidia-drm.ko"
+ACTION=="add" DEVPATH=="/module/nvidia" SUBSYSTEM=="module" RUN+="/opt/nvidia/bin/nvidia-insmod.sh nvidia-drm.ko"
 ACTION=="remove" DEVPATH=="/module/nvidia" SUBSYSTEM=="module" RUN+="/usr/sbin/rmmod nvidia-drm"
 
 # Load and unload nvidia-uvm module
-ACTION=="add" DEVPATH=="/module/nvidia" SUBSYSTEM=="module" RUN+="/opt/bin/nvidia-insmod.sh nvidia-uvm.ko"
+ACTION=="add" DEVPATH=="/module/nvidia" SUBSYSTEM=="module" RUN+="/opt/nvidia/bin/nvidia-insmod.sh nvidia-uvm.ko"
 ACTION=="remove" DEVPATH=="/module/nvidia" SUBSYSTEM=="module" RUN+="/usr/sbin/rmmod -r nvidia-uvm"
 
 # This will create the device nvidia device nodes
-ACTION=="add" DEVPATH=="/module/nvidia" SUBSYSTEM=="module" RUN+="/opt/bin/nvidia-smi"
+ACTION=="add" DEVPATH=="/module/nvidia" SUBSYSTEM=="module" RUN+="/opt/nvidia/bin/nvidia-smi"
 
 # Create the device node for the nvidia-uvm module
-ACTION=="add" DEVPATH=="/module/nvidia_uvm" SUBSYSTEM=="module" RUN+="/opt/bin/create-uvm-dev-node.sh"
+ACTION=="add" DEVPATH=="/module/nvidia_uvm" SUBSYSTEM=="module" RUN+="/opt/nvidia/bin/create-uvm-dev-node.sh"
