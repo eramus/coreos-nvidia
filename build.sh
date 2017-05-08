@@ -26,13 +26,13 @@ done
 echo "Keeping container around after build: ${KEEP_CONTAINER}"
 echo "Additional flags: ${EMERGE_SOURCES}"
 
-COREOS_TRACK_DEFAULT=beta
-COREOS_VERSION_DEFAULT=1185.5.0
+COREOS_TRACK_DEFAULT=stable
+COREOS_VERSION_DEFAULT=1353.7.0
 # If we are on CoreOS by default build for the current CoreOS version
 if [[ -f /etc/lsb-release && -f /etc/coreos/update.conf ]]; then
     source /etc/lsb-release
     source /etc/coreos/update.conf
-    
+
     COREOS_TRACK_DEFAULT=$GROUP
     COREOS_VERSION_DEFAULT=$DISTRIB_RELEASE
 fi

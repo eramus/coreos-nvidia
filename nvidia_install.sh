@@ -5,8 +5,8 @@ if [[ $(uname -r) != *"-coreos-"* ]]; then
     exit 1
 fi
 
-COREOS_TRACK_DEFAULT=beta
-COREOS_VERSION_DEFAULT=1185.5.0
+COREOS_TRACK_DEFAULT=stable
+COREOS_VERSION_DEFAULT=1353.7.0
 # If we are on CoreOS by default use the current CoreOS version
 if [[ -f /etc/lsb-release && -f /etc/coreos/update.conf ]]; then
     source /etc/lsb-release
