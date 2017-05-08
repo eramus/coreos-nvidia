@@ -3,7 +3,7 @@
 # Check for NVIDIA driver updates
 #
 
-DRIVER=${1:-367.27}
+DRIVER=${1:-375.66}
 
 TRACKS="${2:-alpha beta stable}"
 for track in ${TRACKS}

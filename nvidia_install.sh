@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ $(uname -r) != *"-coreos-"* ]]; then
+if [[ $(uname -r) != *"-coreos"* ]]; then
     echo "OS is not CoreOS"
     exit 1
 fi
@@ -20,7 +20,7 @@ if [[ -f /etc/lsb-release && -f /etc/coreos/update.conf ]]; then
     fi
 fi
 
-DRIVER_VERSION=${1:-375.20}
+DRIVER_VERSION=${1:-375.66}
 COREOS_TRACK=${2:-$COREOS_TRACK_DEFAULT}
 COREOS_VERSION=${3:-$COREOS_VERSION_DEFAULT}
 
