@@ -11,7 +11,7 @@ COREOS_VERSION_DEFAULT=1185.5.0
 if [[ -f /etc/lsb-release && -f /etc/coreos/update.conf ]]; then
     source /etc/lsb-release
     source /etc/coreos/update.conf
-    
+
     COREOS_TRACK_DEFAULT=$GROUP
     COREOS_VERSION_DEFAULT=$DISTRIB_RELEASE
     if [[ $DISTRIB_ID != *"CoreOS"* ]]; then
@@ -27,13 +27,12 @@ COREOS_VERSION=${3:-$COREOS_VERSION_DEFAULT}
 # this is where the modules go
 release=$(uname -r)
 
-mkdir -p /opt/nvidia/lib64/tls 2>/dev/null
+mkdir -p /opt/nvidia/lib64 2>/dev/null
 mkdir -p /opt/nvidia/bin 2>/dev/null
 ln -sfT lib64 /opt/nvidia/lib 2>/dev/null
 mkdir -p /opt/nvidia/lib64/modules/$release/video/
 
 tar xvf libraries-$DRIVER_VERSION.tar.bz2 -C /opt/nvidia/lib64/
-tar xvf libraries-tls-$DRIVER_VERSION.tar.bz2 -C /opt/nvidia/lib64/tls/
 tar xvf modules-$COREOS_VERSION-$DRIVER_VERSION.tar.bz2 -C /opt/nvidia/lib64/modules/$release/video/
 tar xvf tools-$DRIVER_VERSION.tar.bz2 -C /opt/nvidia/bin/
 

@@ -33,7 +33,6 @@ helpful for debugging purposes. The scripts will then create three archives:
 
 ```
 libraries-[DRIVER_VERSION].tar.bz2
-libraries-tls-[DRIVER_VERSION].tar.bz2
 tools-[DRIVER_VERSION].tar.bz2
 modules-[COREOS_VERSION]-[DRIVER_VERSION].tar.bz2
 ```
