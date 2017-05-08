@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/usr/sbin/insmod /opt/nvidia/lib/modules/$(uname -r)/video/$1
+/usr/sbin/insmod /opt/nvidia/current/lib/modules/$(uname -r)/video/$1
