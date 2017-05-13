@@ -6,14 +6,10 @@ if [[ $(uname -r) != *"-coreos"* ]]; then
 fi
 
 WITH_DOCKER=true
-WITH_TLS=true
 while :; do
     case $1 in
         --without-docker)
             WITH_DOCKER=false
-            ;;
-        --without-tls)
-            WITH_TLS=false
             ;;
         -?*)
             echo Unknown flag $1
@@ -51,7 +47,7 @@ release=$(uname -r)
 mkdir -p /opt/bin
 rm /opt/bin/nvidia-*
 
-if [ $WITH_TLS ]; then
+if [ $WITH_DOCKER ]; then
     mkdir -p /opt/nvidia/$DRIVER_VERSION/lib64/tls 2>/dev/null
 else
     mkdir -p /opt/nvidia/$DRIVER_VERSION/lib64 2>/dev/null
@@ -66,7 +62,7 @@ tar xvf libraries-$DRIVER_VERSION.tar.bz2 -C /opt/nvidia/$DRIVER_VERSION/lib64/
 tar xvf modules-$COREOS_VERSION-$DRIVER_VERSION.tar.bz2 -C /opt/nvidia/$DRIVER_VERSION/lib64/modules/$release/video/
 tar xvf tools-$DRIVER_VERSION.tar.bz2 -C /opt/nvidia/$DRIVER_VERSION/bin/
 
-if [ $WITH_TLS ]; then
+if [ $WITH_DOCKER ]; then
     tar xvf libraries-tls-$DRIVER_VERSION.tar.bz2 -C /opt/nvidia/$DRIVER_VERSION/lib64/tls/
 fi
 
