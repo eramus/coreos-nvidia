@@ -1,6 +1,6 @@
 #!/bin/sh
 
-/opt/nvidia/current/bin/nvidia-insmod.sh nvidia.ko
+/opt/bin/nvidia-insmod.sh nvidia.ko
 
 # Start the first devices
 /usr/bin/mknod -m 666 /dev/nvidiactl c 195 255 2>/dev/null
