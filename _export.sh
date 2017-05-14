@@ -20,9 +20,7 @@ modules-${COMBINED_VERSION}.tar.bz2 nvidia-docker.service nvidia-insmod.sh nvidi
 nvidia-start.service nvidia-start.sh nvidia_install.sh tools-${VERSION}.tar.bz2"
 
 # Create full archive
-echo "made it here"
-tar -C ${ARTIFACT_DIR} -cvj ${ASSETS} > coreos-nvidia-${COMBINED_VERSION}.tar.bz2
-echo "tar -C ${ARTIFACT_DIR} -cvj ${ASSETS} > coreos-nvidia-${COMBINED_VERSION}.tar.bz2"
+tar -cvj ${ASSETS} > coreos-nvidia-${COMBINED_VERSION}.tar.bz2
 
 # Clean-up
-#rm libraries-${VERSION}.tar.bz2 libraries-tls-${VERSION}.tar.bz2 tools-${VERSION}.tar.bz2 modules-${COMBINED_VERSION}.tar.bz2
+rm libraries-${VERSION}.tar.bz2 libraries-tls-${VERSION}.tar.bz2 tools-${VERSION}.tar.bz2 modules-${COMBINED_VERSION}.tar.bz2
